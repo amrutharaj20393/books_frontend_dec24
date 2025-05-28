@@ -3,7 +3,7 @@ import Footer from '../../components/Footer'
 import AdminHeader from '../components/AdminHeader'
 import AdminSidebar from '../components/AdminSidebar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBook, faUser, faUsers, faUserTie } from '@fortawesome/free-solid-svg-icons'
+import { faBook,  faUsers, faUserTie } from '@fortawesome/free-solid-svg-icons'
 import { Bar, BarChart, CartesianGrid, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
 function AdminHome() {

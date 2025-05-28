@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown, faBook, faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import {  faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
     const [status, setStatus] = useState(false)
     const [dropdownstatus, setDropdownStatus] = useState(false)
     const [token, setToken] = useState("")
 
+
+    const navigate = useNavigate()
+    const logout = () => {
+        sessionStorage.removeItem("existingUser")
+        sessionStorage.removeItem("token")
+        navigate('/')
+    }
     //console.log(token)
     useEffect(() => {
         if(sessionStorage.getItem("token")){
@@ -52,8 +60,8 @@ function Header() {
                         {dropdownstatus && <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
                             <div className="py-1" role="none">
 
-                                <Link to={'/profile'}> <p class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-0"><FontAwesomeIcon icon={faUser} className='me-2' />Profile</p></Link>
-                                <button class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-1"><FontAwesomeIcon icon={faPowerOff} className='me-2' />Logout</button>
+                                <Link to={'/profile'}> <p className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-0"><FontAwesomeIcon icon={faUser} className='me-2' />Profile</p></Link>
+                                <Link to={'/'}><button onClick={logout} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-1"><FontAwesomeIcon icon={faPowerOff} className='me-2' />Logout</button></Link>
 
                             </div>
                         </div>}
@@ -81,8 +89,8 @@ function Header() {
                         {dropdownstatus && <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex="-1">
                             <div className="py-1" role="none">
 
-                                <Link to={'/profile'}> <p class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-0"><FontAwesomeIcon icon={faUser} className='me-2' />Profile</p></Link>
-                                <button class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-1"><FontAwesomeIcon icon={faPowerOff} className='me-2' />Logout</button>
+                                <Link to={'/profile'}> <p className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-0"><FontAwesomeIcon icon={faUser} className='me-2' />Profile</p></Link>
+                                <Link to={'/'}><p onClick={logout} className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-1"><FontAwesomeIcon icon={faPowerOff} className='me-2' />Logout</p></Link>
 
                             </div>
                         </div>}
